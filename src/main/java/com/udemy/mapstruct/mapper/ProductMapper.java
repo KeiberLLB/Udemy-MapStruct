@@ -7,12 +7,16 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 import org.mapstruct.Mappings;
+// import org.mapstruct.factory.Mappers;
 
 import com.udemy.mapstruct.dto.GetProduct;
 import com.udemy.mapstruct.entity.Product;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING, uses = { CategoryMapper.class })
 public interface ProductMapper {
+
+  // public ProductMapper INSTANCE = Mappers.getMapper(ProductMapper.class);
+  // se usa para intanciar sin dependencias
 
   // cuando los atributos se llaman igual no es necesario hacer mapping,
   // principalmente se usa para atributos diferentes
@@ -21,7 +25,7 @@ public interface ProductMapper {
       @Mapping(source = "creationDate", target = "creationDate", dateFormat = "yyyy-MM-dd HH:mm:ss"),
       @Mapping(source = "name", target = "productName"),
       @Mapping(source = "id", target = "productId"),
-      @Mapping(source = "price", target = "price", numberFormat = "$#.00")
+      @Mapping(source = "price", target = "price", numberFormat = "$0.00")
   })
   GetProduct productToGetDTO(Product product);
 

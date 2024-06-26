@@ -22,6 +22,9 @@ public class InitDatabase {
   @Autowired
   private ProductMapper productMapper;
 
+  // private ProductMapper productMapper = ProductMapper.INSTANCE;
+  // cuando no hay dependencias
+
   @Bean
   public CommandLineRunner testProductMapperCommand() {
     return args -> {
